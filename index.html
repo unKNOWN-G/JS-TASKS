@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Html Layout">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="unKNOWN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="outerContainer">
+        <section>
+            <article>
+                <h2 id="krishnaHeading">Krishna's Potrait</h2>
+            </article>
+        </section>
+        <div class="innerContainer">
+            <section class="options">
+                <div><label for="thickness">Thickness</label>
+                    <input type="range" id="thickness">
+                </div>
+                <div><label for="blurness">Blurval</label>
+                    <input type="range" id="blurness">
+                </div>
+                <div><label for="colorval">Color </label>
+                    <input type="color" id="colorval">
+                </div>
+            </section>
+            <hr size="4" style="background-color: black;">
+            <div class="imageContainer">
+                <img src="./data/stock_images/lord_krishna.jpeg" alt="lord_krishna_img" height="60%">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./script.js"></script>
+
+</html>
