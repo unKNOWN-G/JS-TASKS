@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  font-size: 16px;
+  background-color: black;
+}
+
+.musicBox {
+  /* Styling */
+  background-color: black;
+  margin: 0;
+  padding: 20px;
+  border-radius: 20px;
+
+  /* Adding Flex to Wrap Contents */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1;
+
+  height: 200px;
+}
+.keyBox {
+  width: 4em;
+  height: 3em;
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color: yellow;
+  display: inline-block;
+
+  /* Adding Flex to align P and H5 elems in center of Box */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  /* Adding Transition for smooth change */
+
+  transition: 0.5s;
+}
+
+.keybox_active {
+  font-size: 1.2em;
+  border: 2px solid black;
+}
+
+.outerContainer {
+  height: 90vh;
+  max-height: 800px;
+  width: 70%;
+  margin: auto;
+
+  /* Display */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen {
+}
