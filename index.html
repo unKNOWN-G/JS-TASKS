@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Html Layout">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="unKNOWN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML</title>
+
+    <script>
+
+        class Hero {
+            constructor(secretId, name, age) {
+                this.secretId = secretId;
+                this.name = name;
+                this.age = age;
+                this.status = true;
+            }
+        }
+
+
+        class Logic {
+
+            constructor() {
+                this.heroWiki = [
+                    new Hero(10, "Major", 10),
+                    new Hero(0, "unKNOWN", 0)
+                ];
+                console.log(this.heroWiki);
+            }
+
+            shareHeroInformation(heroCred) {
+                if (heroCred.secretId === "10") {
+                    let data = {
+                        "access": true,
+                        "data": this.heroWiki,
+                    }
+                    return data
+                }
+                else {
+                    let data = {
+                        "access": false,
+                        "data": {},
+                    }
+                    return data
+                }
+
+            };
+
+            createHeroIdentity() {
+                let heroInfo = getInputData();
+                console.log(heroInfo)
+                console.log(`New Hero Being Created !!!\nName : ${heroInfo.name} \nAge: ${heroInfo.age}`);
+                if (heroInfo.status) {
+                    console.log(`${heroInfo.name} is now Active`)
+                    alert("Hero Created ^_^");
+                    console.log("Hero Created ^_^")
+                    this.heroWiki.push(heroInfo);
+                }
+                else {
+                    console.log("Crash Occured")
+                }
+
+                console.log(this.heroWiki)
+            };
+
+            updateHeroInfo() {
+                let heroInfo = getInputData();
+                let heroIndex = -2;
+                for (var i = 0; i < this.heroWiki.length; i++) {
+                    if (this.heroWiki[i].secretId == heroInfo.secretId) {
+
+                        heroIndex = i;
+                        break;
+                    }
+                }
+                if (heroIndex != -2) {
+                    this.heroWiki[heroIndex].secretId = heroInfo.secretId;
+                    this.heroWiki[heroIndex].name = heroInfo.name;
+                    this.heroWiki[heroIndex].age = heroInfo.age;
+                    console.log("Hero Info Edited")
+                }
+                alert("Hero Status Updated")
+            };
+
+            deleteHero() {
+                let heroInfo = getInputData();
+                let heroIndex = -2;
+                for (var i = 0; i < this.heroWiki.length; i++) {
+                    if (this.heroWiki[i].id == heroInfo.secretId) {
+                        heroIndex = i;
+                        break;
+                    }
+                }
+                if (heroIndex != -2) {
+                    this.heroWiki.slice(heroIndex, 1);
+                    console.log(`${this.heroWiki[heroIndex].name} Ended`)
+                }
+                alert("Hero Ended :(");
+            };
+
+
+        }
+        // End of Logic Implementations
+
+        // Function Definition and Implementations
+
+        function displayAllHeros(heroOperations) {
+            let newHero = getInputData();
+            let data = heroOperations.shareHeroInformation(newHero);
+            if (data.access) {
+                let dataDisplayObj = document.querySelector("#dataDisplay")
+                while (dataDisplayObj.firstChild) {
+                    dataDisplayObj.removeChild(dataDisplayObj.firstChild);
+                }
+
+                var tableobj = document.createElement("table")
+                let x = document.createElement("p")
+                x.value = "Secret Info"
+                tableobj.appendChild(x)
+                for (let i = 0; i < data.data.length; i++) {
+                    var rowobj = document.createElement("tr")
+
+                    var rowobj1 = document.createElement("td")
+                    var rowobj2 = document.createElement("td")
+                    var rowobj3 = document.createElement("td")
+
+
+                    rowobj1.innerHTML = data.data[i].secretId
+                    rowobj2.innerHTML = data.data[i].name
+                    rowobj3.innerHTML = data.data[i].age
+
+                    rowobj.appendChild(rowobj1)
+                    rowobj.appendChild(rowobj2)
+                    rowobj.appendChild(rowobj3)
+
+                    tableobj.appendChild(rowobj)
+                }
+                dataDisplayObj.appendChild(tableobj)
+
+                // for (let i = 0; i < data.data.length; i++) {
+                //     let rowobj = tableobj
+                //     console.log(rowobj)
+
+                //     let rowobj1 = rowobj[0]
+                //     let rowobj2 = rowobj[1]
+                //     let rowobj3 = rowobj[2]
+
+                //     rowobj1.value = data.data[i].secretId
+                //     rowobj2.value = data.data[i].name
+                //     rowobj3.value = data.data[i].age
+                // }
+
+
+                console.log(tableobj)
+            }
+            else {
+                console.log("Access Denied");
+                alert("Access Denied");
+            }
+        }
+
+        // Input Data
+        function getInputData() {
+            let heroId = document.getElementById("secretid").value;
+            let heroName = document.getElementById("name").value;
+            let heroAge = document.getElementById("age").value;
+            let newHero = new Hero(heroId, heroName, heroAge);
+
+            return newHero;
+        }
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const heroOperations = new Logic();
+            console.log(heroOperations.heroWiki)
+
+            // Event Listeners
+
+            // Add Event Listener
+            let addButton = document.querySelector("#add");
+            addButton.addEventListener("click", function () { heroOperations.createHeroIdentity() })
+
+            // Update Event Listener
+            let updateButton = document.querySelector("#update");
+            updateButton.addEventListener("click", function () { heroOperations.updateHeroInfo() })
+
+            // Delete Event Listener
+            let deleteButton = document.querySelector("#delete");
+            deleteButton.addEventListener("click", function () { heroOperations.deleteHero() })
+
+            // Display Hero Event Listener
+            let displayHero = document.querySelector("#revealIds")
+            displayHero.addEventListener("click", function () { displayAllHeros(heroOperations) })
+        });
+    </script>
+</head>
+
+<body>
+
+    <h1><em>Hero's</em> Directory</h1>
+    <p>Congratulation for making it into the Hero's Clan. Lets Create history. You can start by entering Your Basic
+        Information</p>
+
+    <section id="dataCollection">
+        <label for="secretid">Enter Your Secret Id : </label>
+        <input type="password" name="secretid" id="secretid">
+        <br />
+        <label for="name">Enter Your Name : </label>
+        <input type="text" name="name" id="name">
+        <br />
+        <label for="age">Enter Your Age : </label>
+        <input type="number" name="age" id="age">
+        <br />
+    </section>
+
+    <section id="dataManuplation">
+        <br />
+        <button id="add">Add</button>
+        <button id="update">Update</button>
+        <button id="delete">Delete</button>
+        <br />
+    </section>
+
+    <section id="revealIdentity">
+        <br />
+        <p id="identityDescription">It's Top Secret Information. Only Major has the access to see the data</p>
+        <button id="revealIds">Reveal Identity</button>
+        <div id="dataDisplay"></div>
+        <br />
+    </section>
+</body>
+
+</html>
