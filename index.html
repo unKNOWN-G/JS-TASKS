@@ -89,14 +89,14 @@
                 let heroInfo = getInputData();
                 let heroIndex = -2;
                 for (var i = 0; i < this.heroWiki.length; i++) {
-                    if (this.heroWiki[i].id == heroInfo.secretId) {
-                        heroIndex = i;
+                    if (this.heroWiki[i].secretId == heroInfo.secretId) {
+
+                        console.log(`${this.heroWiki[i].name} Ended`)
+                        console.log("sdas", this.heroWiki, i)
+                        this.heroWiki.splice(i, 1);
+                        console.log("sdas", this.heroWiki)
                         break;
                     }
-                }
-                if (heroIndex != -2) {
-                    this.heroWiki.slice(heroIndex, 1);
-                    console.log(`${this.heroWiki[heroIndex].name} Ended`)
                 }
                 alert("Hero Ended :(");
             };
