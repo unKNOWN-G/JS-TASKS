@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Html Layout">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="unKNOWN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+
+    <section>
+        <i>
+            <em>
+                <h2 id="tableHeading">unKNOWN Corp Employee Data</h2>
+            </em>
+        </i>
+        <p>Click on header elem to sort</p>
+        <table>
+            <thead id="tableHeader">
+                <td id="id">ID</td>
+                <td id="name">Name</td>
+                <td id="role">Role</td>
+                <td id="satisfy">Satisfied</td>
+            </thead>
+            <tbody id="tableBody">
+
+            </tbody>
+        </table>
+    </section>
+
+    <section class="dataAddition">
+        <div id="dataContainer">
+            <h4>Data Entry</h4>
+            <label for="employeeId">ID :</label>
+            <input type="text" id="employeeId" name="employeeId">
+            <br>
+            <label for="employeeName">Name : </label>
+            <input type="text" id="employeeName" name="employeeName">
+            <br>
+            <label for="employeeRole">Role : </label>
+            <input type="text" id="employeeRole" name="employeeRole">
+            <br>
+            <label for="employeeSatisfied">Satisfied</label>
+            <input type="text" name="employeeSatisfied" id="employeeSatisfied">
+
+            <br>
+        </div>
+        <div id="dataOperations">
+            <button id="add">Add</button>
+            <button id="update">Update</button>
+            <button id="delete">Delete</button>
+        </div>
+    </section>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
